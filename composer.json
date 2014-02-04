@@ -11,6 +11,7 @@
      "autoload": {
         "psr-0": { "FMM\\OryxBundle": "" }
     },
+    "target-dir": "FMM/OryxBundle",
     "require": {
         "guzzle/guzzle": "dev-master"
     },
