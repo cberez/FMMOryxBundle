@@ -1,0 +1,7 @@
+parameters:
+    fmm_oryx.service.class: FMM\OryxBundle\Service\OryxService
+
+services:
+    fmm_oryx.service:
+        class: %fmm_oryx.service.class%
+        arguments: [%fmm_oryx.host%, %fmm_oryx.port%, %fmm_oryx.username%, %fmm_oryx.password%]

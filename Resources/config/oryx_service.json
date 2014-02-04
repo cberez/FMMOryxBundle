@@ -1,0 +1,269 @@
+{
+    "name": "Oryx Client",
+    "description": "Oryx Client is a REST client giving access to the Oryx serving layer",
+    "operations": {
+        "GetRecommendation": {
+            "httpMethod": "GET",
+            "uri": "/recommend/{userID}",
+            "summary": "Get recommendation(s) for a given user",
+            "parameters": {
+                "userID": {
+                    "location": "uri",
+                    "description": "The User ID to get the recommendation for",
+                    "required": true,
+                    "type": "integer"
+                },
+                "howMany": {
+                    "location": "query",
+                    "description": "Max number of items to return",
+                    "type": "integer"
+                }
+            }
+        },
+        "GetRecommendationToMany": {
+            "httpMethod": "GET",
+            "uri": "/recommendToMany{/userIDs*}",
+            "summary": "Get recommendation(s) for multiple users",
+            "parameters": {
+                "userIDs": {
+                    "location": "uri",
+                    "description": "The User IDs to get the recommendation(s) for",
+                    "required": true,
+                    "type": "integer"
+                },
+                "howMany": {
+                    "location": "query",
+                    "description": "How many recommendations to return",
+                    "type": "integer"
+                }
+            }
+        },
+        "GetRecommendationToAnonymous": {
+            "httpMethod": "GET",
+            "uri": "/recommendToAnonymous{/scoreParams*}",
+            "summary": "Get recommendation(s) for an anonymous user",
+            "parameters": {
+                "scoreParams": {
+                    "location": "uri",
+                    "description": "Item/Strength pairs that define the user preferences",
+                    "required": true,
+                    "type": "array",
+                    "items": {
+                        "description": "A value describing the strength of the association to the item",
+                        "type": "numeric"
+                    }
+                },
+                "howMany": {
+                    "location": "query",
+                    "description": "How many recommendations to return",
+                    "type": "integer"
+                }
+            }
+        },
+        "GetSimilarity": {
+            "httpMethod": "GET",
+            "uri": "/similarity{/itemIDs*}",
+            "summary": "Get ids from items that are similar",
+            "parameters": {
+                "itemIDs": {
+                    "location": "uri",
+                    "description": "The Item IDs to find similarities for",
+                    "required": true,
+                    "type": "array",
+                    "minItems": "1"
+                },
+                "howMany": {
+                    "location": "query",
+                    "description": "Max number of items to return per user",
+                    "type": "integer"
+                }
+            }
+        },
+        "GetSimilarityToItem": {
+            "httpMethod": "GET",
+            "uri": "/similarityToItem{/toItemID}{/itemIDs*}",
+            "summary": "Get the similarity of each item from the set to the given item",
+            "parameters": {
+                "toItemID": {
+                    "location": "uri",
+                    "description": "The item to calculate similarity to",
+                    "required": true,
+                    "type": "integer"
+                },
+                "itemIDs": {
+                    "location": "uri",
+                    "description": "The items to calculate similarity from",
+                    "type": "array",
+                    "required": true,
+                    "minItems": "1"
+                }
+            }
+        },
+        "GetEstimation": {
+            "httpMethod": "GET",
+            "uri": "/estimate/{userID}/{itemIDs*}",
+            "summary": "Get an estimated preference",
+            "parameters": {
+                "userID": {
+                    "location": "uri",
+                    "description": "The user ID whose preference is to be estimated",
+                    "required": true,
+                    "type": "integer"
+                },
+                "itemIDs": {
+                    "location": "uri",
+                    "description": "The item IDs to estimate preference for",
+                    "required": true,
+                    "type": "array",
+                    "minItems": "1"
+                }
+            }
+        },
+        "GetEstimationForAnonymous": {
+            "httpMethod": "GET",
+            "uri": "/estimateForAnonymous/{toItemID}{/scoreParams*}",
+            "summary": "Get an estimated preference for an anonymous user",
+            "parameters": {
+                "toItemID": {
+                    "location": "uri",
+                    "description": "The item id for which the anonymous user's strength of interaction is to be estimated",
+                    "required": true,
+                    "type": "integer"
+                },
+                "scoreParams": {
+                    "location": "uri",
+                    "description": "Item/Strength pairs that define the user preferences",
+                    "required": true,
+                    "type": "array",
+                    "items": {
+                        "description": "A value describing the strength of the association to the item",
+                        "type": "numeric"
+                    }
+                }
+            }
+        },
+        "GetBecause": {
+            "httpMethod": "GET",
+            "uri": "/because/{userID}/{itemID}",
+            "summary": "Lists the items that were most influential in recommending a given item to a given user",
+            "parameters": {
+                "userID": {
+                    "location": "uri",
+                    "description": "The User ID who was recommended the item",
+                    "required": true,
+                    "type": "integer"
+                },
+                "itemID": {
+                    "location": "uri",
+                    "description": "The item ID that was recommended",
+                    "required": true,
+                    "type": "integer"
+                },
+                "howMany": {
+                    "location": "query",
+                    "description": "Max number of items to return",
+                    "type": "integer"
+                }
+            }
+        },
+        "GetMostPopularItems": {
+            "httpMethod": "GET",
+            "uri": "/mostPopularItems",
+            "summary": "",
+            "parameters": {
+                "howMany": {
+                    "location": "query",
+                    "description": "How many items to return",
+                    "type": "integer"
+                }
+            }
+        },
+        "SetPref": {
+            "httpMethod": "POST",
+            "uri": "/pref/{userID}/{itemID}",
+            "summary": "Adds to a user-item preference, or association",
+            "parameters": {
+                "userID": {
+                    "location": "uri",
+                    "description": "The user involved in the new preference",
+                    "required": true,
+                    "type": "integer"
+                },
+                "itemID": {
+                    "location": "uri",
+                    "description": "The item involved",
+                    "required": true,
+                    "type": "integer"
+                },
+                "value": {
+                    "location": "body",
+                    "description": "strength value",
+                    "type": "numeric"
+                }
+            }
+        },
+        "RemovePref": {
+            "httpMethod": "DELETE",
+            "uri": "/pref/{userID}/{itemID}",
+            "summary": "Remove an item from the user's set of known items",
+            "parameters": {
+                "userID": {
+                    "location": "uri",
+                    "description": "The user involved in the new preference",
+                    "required": true,
+                    "type": "integer"
+                },
+                "itemID": {
+                    "location": "uri",
+                    "description": "The item involved",
+                    "required": true,
+                    "type": "integer"
+                }
+            }
+        },
+        "Ingest": {
+            "httpMethod": "POST",
+            "uri": "/ingest",
+            "summary": "Feeds the content of the body to the engine. Content may be gzipped.",
+            "parameters": {
+                "data": {
+                    "description": "New preferences",
+                    "required": true,
+                    "location": "body",
+                    "type": "array",
+                    "minItems": 1,
+                    "filters": ["FMM\\OryxBundle\\Client\\OryxClient::filterIngestData"],
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "userID": {
+                                "type": "integer",
+                                "description": "The user ID",
+                                "required": true
+                            },
+                            "itemID": {
+                                "type": "integer",
+                                "description": "The item ID",
+                                "required": true
+                            },
+                            "value": {
+                                "description": "A value describing the strength of the observed association.",
+                                "type": "numeric"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Ready": {
+            "httpMethod": "GET",
+            "uri": "/ready",
+            "summary": "Returns \"OK\" or \"Unavailable\" status depending on whether the recommender is ready."
+        },
+        "Refresh": {
+            "httpMethod": "POST",
+            "uri": "/refresh",
+            "summary": "Triggers a rebuild of the object's internal state, particularly, the matrix model"
+        }
+    }
+}

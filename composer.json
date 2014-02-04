@@ -1,0 +1,25 @@
+{
+    "name": "fmm/oryx-recommend",
+    "description": "A php client for the Oryx recommendation service layer",
+    "version": "0.0.1-dev",
+    "type": "symfony-bundle",
+    "keywords": ["recommendation", "oryx", "cloudera", "hadoop", "mahout"],
+    "homepage": "",
+    "license": "MIT",
+    "stability": "dev",
+    "minimum-stability": "dev",
+     "autoload": {
+        "psr-0": { "FMM\\OryxBundle": "" }
+    },
+    "require": {
+        "guzzle/guzzle": "dev-master"
+    },
+    "authors": [
+        {
+            "name": "César Berezowski",
+            "email": "c.berezowski@gmail.com",
+            "homepage": "github.com/cesarBere",
+            "role": "Developer"
+        }
+    ]
+}
