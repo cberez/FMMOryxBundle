@@ -15,6 +15,51 @@ See the [Oryx doc](https://github.com/cloudera/oryx/wiki/Installation) for insta
 
 ### Install the bundle
 
+#### Get the Bundle via Composer
+
+In the command line : 
+```
+composer require fmm/oryx-recommend
+```
+
+Manually : add guzzle and fmm/oryx-recommend to your composer.json : 
+```
+{
+  "require": 
+  {
+    "guzzle/guzzle": "dev-master",
+    "fmm/oryx-recommend": "dev-master"
+  }
+}
+```
+and then install the dependencies with `composer install`.
+
+#### Add the bundle to your kernel
+
+```
+// app/AppKernel.php
+public function registerBundles()
+{
+    return array(
+        // ...
+        new FMM\OryxBundle\FMMOryxBundle(),
+        // ...
+    );
+}
+```
+
+#### Set the configuration
+
+You have to configure the Oryx endpoint configuration :
+```
+// app/config/config.yml
+fmm_oryx:
+    host: localhost # The Oryx host
+    port: 8080      # The Oryx port
+    username: test  # The Oryx username
+    password: 1234  # The Oryx password
+
+```
 
 Usage
 -----
