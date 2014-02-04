@@ -4,7 +4,7 @@
     "version": "0.0.1-dev",
     "type": "symfony-bundle",
     "keywords": ["recommendation", "oryx", "cloudera", "hadoop", "mahout"],
-    "homepage": "",
+    "homepage": "https://github.com/cesarBere/FMMOryxBundle",
     "license": "MIT",
     "stability": "dev",
     "minimum-stability": "dev",
