@@ -23,7 +23,7 @@ composer require fmm/oryx-recommend
 ```
 
 Manually : add guzzle and fmm/oryx-recommend to your composer.json : 
-```
+```json
 {
   "require": 
   {
@@ -36,7 +36,7 @@ and then install the dependencies with `composer install`.
 
 #### Add the bundle to your kernel
 
-```
+```php
 // app/AppKernel.php
 public function registerBundles()
 {
@@ -51,7 +51,7 @@ public function registerBundles()
 #### Set the configuration
 
 You have to configure the Oryx endpoint configuration :
-```
+```yml
 // app/config/config.yml
 fmm_oryx:
     host: localhost # The Oryx host
@@ -88,7 +88,7 @@ Usage
 
 Get an instance of `OryxService` :
 
-```
+```php
 // Get an instance
 $oryx = $this->get('fmm_oryx.service');
 
