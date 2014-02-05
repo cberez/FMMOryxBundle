@@ -4,7 +4,7 @@ Oryx Bundle
 The Oryx open source project provides simple, real-time large-scale machine learning / predictive analytics infrastructure. It is built on the [Apache Mahout libraries](http://mahout.apache.org/) and represents a unified continuation of the [Myrrix](http://myrrix.com) and
 [cloudera/ml](https://github.com/cloudera/ml) projects. You can check it out [here](https://github.com/cloudera/oryx).
 
-This bundle helps to interface with the Oryx Collaborative filtering and Recommendation services. 
+This bundle helps to interface with the Oryx Collaborative filtering and Recommendation services. It is built on top of [Guzzle](https://github.com/guzzle/guzzle) and inspired by [michelsalib's](https://github.com/michelsalib) [BCCMyrrixBundle](https://github.com/michelsalib/BCCMyrrixBundle) and [bcc-myrrix](https://github.com/michelsalib/bcc-myrrix) projects.
 
 Installation & configuration
 ----------------------
